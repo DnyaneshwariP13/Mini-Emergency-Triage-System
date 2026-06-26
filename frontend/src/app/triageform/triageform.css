@@ -1,0 +1,180 @@
+/* ---- Container ---- */
+.patient-form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.patient-form-container h2 {
+  color: #13a1ae;
+  margin-bottom: 24px;
+  font-size: 24px;
+  text-align: center;
+}
+
+/* ---- Error Message ---- */
+.error-message {
+  color: #dc2626;
+  background-color: #fef2f2;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ---- Form Groups ---- */
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #475569;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.form-group label .required {
+  color: #dc2626;
+  margin-left: 4px;
+}
+
+/* ---- Inputs, Select, Textarea ---- */
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="datetime-local"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* ---- Invalid state ---- */
+.form-group input.invalid,
+.form-group select.invalid {
+  border-color: #dc2626;
+}
+
+.error-text {
+  color: #dc2626;
+  font-size: 13px;
+  margin-top: 5px;
+  display: block;
+}
+
+/* ---- Focus state ---- */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #13a1ae;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(19, 161, 174, 0.1);
+}
+
+/* ---- Form Actions ---- */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.save-button,
+.delete-button,
+.cancel-button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.save-button {
+  background-color: #13a1ae;
+  color: white;
+}
+
+.save-button:hover:not(:disabled) {
+  background-color: #0f8a96;
+  transform: translateY(-2px);
+}
+
+.save-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.delete-button {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+.delete-button:hover {
+  background-color: #fee2e2;
+}
+
+.cancel-button {
+  background-color: #f1f5f9;
+  color: #475569;
+}
+
+.cancel-button:hover {
+  background-color: #e2e8f0;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 640px) {
+  .patient-form-container {
+    padding: 20px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .edit-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .save-button,
+  .delete-button,
+  .cancel-button {
+    width: 100%;
+  }
+  .triage-form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+}

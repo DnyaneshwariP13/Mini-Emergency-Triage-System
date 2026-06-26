@@ -1,0 +1,42 @@
+<nav>
+  <!-- Left: Logo -->
+  <div class="logo">
+    <a routerLink="/" class="logo-link">
+      <span class="logo-icon">🏥</span> Emergency Triage System
+    </a>
+  </div>
+
+  <!-- Center: Add Patient + Patient Data -->
+  <div class="nav-center">
+    <a  routerLink="/dashboard" class="nav-link" title="Dashboard Summary">
+      Dashboard
+    </a>
+    <a routerLink="/patients" class="nav-link">Patient Data</a>
+  </div>
+
+  <!-- Right: User Profile / Authentication -->
+  <div class="nav-right">
+    <ng-container *ngIf="isAuthenticated; else unauthenticated">
+      <div class="user-profile" (click)="toggleDropdown()">
+        <div class="avatar">
+          {{ getUserInitials() }}
+        </div>
+        <span class="username">{{ getCurrentUser() }}</span>
+        <span class="dropdown-arrow">▼</span>
+      </div>
+
+      <!-- Dropdown menu -->
+      <div class="dropdown-menu"  *ngIf="dropdownOpen">
+        <a routerLink="/profile" class="dropdown-item">👤 Profile</a>
+        <a routerLink="/settings" class="dropdown-item">⚙️ Settings</a>
+        <hr />
+        <button (click)="handleLogout()" class="dropdown-item logout-btn">🚪 Logout</button>
+      </div>
+    </ng-container>
+
+    <ng-template #unauthenticated>
+      <a routerLink="/login" class="nav-link">Login</a>
+      <a routerLink="/register" class="nav-link">Register</a>
+    </ng-template>
+  </div>
+</nav>

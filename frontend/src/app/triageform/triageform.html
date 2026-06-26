@@ -1,0 +1,81 @@
+<div class="triage-form-container">
+  <h2>Add Triage Assessment</h2>
+  <p class="patient-info" *ngIf="patientId">Patient ID: {{ patientId }}</p>
+
+  <!-- Error message -->
+  <div *ngIf="error" class="error-message">{{ error }}</div>
+
+ <form *ngIf="triageForm" [formGroup]="triageForm" (ngSubmit)="onSubmit()">
+
+    <!-- Priority -->
+    <div class="form-group">
+      <label for="priority">Priority <span class="required">*</span></label>
+      <select id="priority" formControlName="priority">
+        <option value="">Select Priority</option>
+        <option value="RED">🔴 Red – Critical</option>
+        <option value="YELLOW">🟡 Yellow – Urgent</option>
+        <option value="GREEN">🟢 Green – Stable</option>
+      </select>
+      <span *ngIf="triageForm.get('priority')?.invalid && triageForm.get('priority')?.touched" class="error-text">
+        Priority is required.
+      </span>
+    </div>
+
+    <!-- Blood Pressure -->
+    <div class="form-group">
+      <label for="bloodPressure">Blood Pressure <span class="required">*</span></label>
+      <input
+        type="text"
+        id="bloodPressure"
+        formControlName="bloodPressure"
+        placeholder="e.g., 120/80"
+        [ngClass]="{'invalid': triageForm.get('bloodPressure')?.invalid && triageForm.get('bloodPressure')?.touched}"
+      />
+      <span *ngIf="triageForm.get('bloodPressure')?.invalid && triageForm.get('bloodPressure')?.touched" class="error-text">
+        Enter valid blood pressure (e.g., 120/80).
+      </span>
+    </div>
+
+    <!-- Pulse Rate -->
+    <div class="form-group">
+      <label for="pulseRate">Pulse Rate (bpm) <span class="required">*</span></label>
+      <input
+        type="number"
+        id="pulseRate"
+        formControlName="pulseRate"
+        placeholder="e.g., 72"
+        [ngClass]="{'invalid': triageForm.get('pulseRate')?.invalid && triageForm.get('pulseRate')?.touched}"
+      />
+      <span *ngIf="triageForm.get('pulseRate')?.invalid && triageForm.get('pulseRate')?.touched" class="error-text">
+        Pulse rate must be between 30 and 200 bpm.
+      </span>
+    </div>
+
+    <!-- Temperature -->
+    <div class="form-group">
+      <label for="temperature">Temperature (°F) <span class="required">*</span></label>
+      <input
+        type="number"
+        id="temperature"
+        formControlName="temperature"
+        placeholder="e.g., 98.6"
+        step="0.1"
+        [ngClass]="{'invalid': triageForm.get('temperature')?.invalid && triageForm.get('temperature')?.touched}"
+      />
+      <span *ngIf="triageForm.get('temperature')?.invalid && triageForm.get('temperature')?.touched" class="error-text">
+        Temperature must be between 95 and 105 °F.
+      </span>
+    </div>
+
+    <!-- Form Actions -->
+    <div class="form-actions">
+      <button type="submit" class="save-button" [disabled]="triageForm.invalid || isLoading">
+        {{ isLoading ? 'Saving...' : 'Add Triage' }}
+      </button>
+      <button type="button" class="cancel-button" routerLink="/patients">
+        Cancel
+      </button>
+    </div>
+
+  </form>
+</div>

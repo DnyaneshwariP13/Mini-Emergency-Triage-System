@@ -1,0 +1,65 @@
+<div class="detail-container" *ngIf="!isLoading; else loadingSpinner">
+
+  <!-- Error -->
+  <div *ngIf="error" class="error-message">{{ error }}</div>
+
+  <!-- Patient details (as before) -->
+  <div *ngIf="patient" class="patient-card">
+    <!-- Header -->
+    <div class="detail-header">
+      <h2>Patient Details</h2>
+      <button class="back-btn" (click)="goBack()">← Back to List</button>
+    </div>
+
+    <!-- Patient Information -->
+    <div class="section">
+      <h3>Personal Information</h3>
+      <div class="info-grid">
+        <div><strong>Patient ID:</strong> {{ patient.patientId }}</div>
+        <div><strong>Name:</strong> {{ patient.patientName }}</div>
+        <div><strong>Age:</strong> {{ patient.age }}</div>
+        <div><strong>Gender:</strong> {{ patient.gender }}</div>
+        <div><strong>Mobile:</strong> {{ patient.mobileNumber }}</div>
+        <div><strong>Status:</strong> 
+          <span class="status-badge" [ngClass]="{
+            'status-waiting': patient.status === 'WAITING',
+            'status-treatment': patient.status === 'UNDER_TREATMENT',
+            'status-discharged': patient.status === 'DISCHARGED'
+          }">{{ patient.status }}</span>
+        </div>
+        <div><strong>Arrival:</strong> {{ patient.arrivalDateTime | date:'medium' }}</div>
+        <div *ngIf="patient.chiefComplaint"><strong>Chief Complaint:</strong> {{ patient.chiefComplaint }}</div>
+      </div>
+    </div>
+
+    <!-- Triage Assessment -->
+    <div class="section">
+      <h3>Triage Assessment</h3>
+      <div *ngIf="patient?.triageAssessment; else noTriage">
+        <div class="info-grid">
+          <div><strong>Priority:</strong> 
+            <span class="priority-badge" [ngClass]="{
+              'priority-red': patient.triageAssessment.priority === 'RED',
+              'priority-yellow': patient.triageAssessment.priority === 'YELLOW',
+              'priority-green': patient.triageAssessment.priority === 'GREEN'
+            }">{{ patient.triageAssessment.priority }}</span>
+          </div>
+          <div><strong>Blood Pressure:</strong> {{ patient.triageAssessment.bloodPressure }}</div>
+          <div><strong>Pulse Rate:</strong> {{ patient.triageAssessment.pulseRate }} bpm</div>
+          <div><strong>Temperature:</strong> {{ patient.triageAssessment.temperature }} °F</div>
+          <div><strong>Assessed On:</strong> {{ patient.triageAssessment.createdDate | date:'medium' }}</div>
+        </div>
+        <button class="btn-edit-triage" (click)="goToTriage()">✎ Edit Triage</button>
+      </div>
+      <ng-template #noTriage>
+        <p class="no-data">No triage assessment recorded yet.</p>
+        <button class="btn-add-triage" (click)="goToTriage()">➕ Add Triage</button>
+      </ng-template>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ Loading spinner template (defined here) -->
+<ng-template #loadingSpinner>
+  <div class="loading">Loading patient data...</div>
+</ng-template>

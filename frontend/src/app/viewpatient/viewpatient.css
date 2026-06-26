@@ -1,0 +1,128 @@
+.detail-container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.error-message {
+  background: #fef2f2;
+  color: #dc2626;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.patient-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 30px;
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 16px;
+}
+
+.detail-header h2 {
+  margin: 0;
+  color: #13a1ae;
+}
+
+.back-btn {
+  background: #f1f5f9;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #475569;
+  transition: 0.2s;
+}
+
+.back-btn:hover {
+  background: #e2e8f0;
+}
+
+.section {
+  margin-top: 28px;
+}
+
+.section h3 {
+  color: #1e293b;
+  font-size: 18px;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 24px;
+}
+
+.info-grid div {
+  padding: 6px 0;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.status-waiting { background: #fef9c3; color: #854d0e; }
+.status-treatment { background: #dbeafe; color: #1e40af; }
+.status-discharged { background: #dcfce7; color: #166534; }
+
+.priority-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.priority-red { background: #fecaca; color: #991b1b; }
+.priority-yellow { background: #fde68a; color: #92400e; }
+.priority-green { background: #bbf7d0; color: #166534; }
+
+.no-data {
+  color: #94a3b8;
+  font-style: italic;
+}
+
+.btn-add-triage,
+.btn-edit-triage {
+  margin-top: 12px;
+  background: #13a1ae;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.btn-add-triage:hover,
+.btn-edit-triage:hover {
+  background: #0f8a96;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: #64748b;
+}
+
+@media (max-width: 640px) {
+  .info-grid { grid-template-columns: 1fr; }
+  .detail-header { flex-direction: column; align-items: stretch; gap: 10px; }
+}
