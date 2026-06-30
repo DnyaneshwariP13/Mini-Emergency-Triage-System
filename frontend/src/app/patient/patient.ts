@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { ApiService } from '../service/api';
 import { CommonModule } from '@angular/common';
@@ -36,7 +36,7 @@ export class Patient implements OnInit {
   pageSize: number = 10;
   totalPages: number = 0;
 
-  constructor(private apiService: ApiService, private router: Router) {}
+  constructor(private apiService: ApiService, private router: Router,private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     // Redirect to login if user is not authenticated
@@ -64,6 +64,7 @@ export class Patient implements OnInit {
           this.patients = res.data || [];
           //this.filteredPatients = [...this.patients];
           this.applyFilters(); // will also apply pagination
+          this.cdr.detectChanges();           // Force the view to refresh NOW
         } else {
           this.error = res.message || 'Failed to fetch patients';
         }

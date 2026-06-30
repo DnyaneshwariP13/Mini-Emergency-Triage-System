@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 import { ApiService } from '../service/api';
@@ -22,7 +22,8 @@ export class Viewpatient implements OnInit {
   constructor(
     private patientService: ApiService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef // <-- Inject here
   ) {}
 /*
   ngOnInit(): void {
@@ -41,6 +42,7 @@ export class Viewpatient implements OnInit {
     }
   }*/
     ngOnInit(): void {
+      
     // ✅ Subscribe to route parameter changes
     this.routeSub = this.route.paramMap.subscribe(params => {
       const id = params.get('id');
@@ -64,15 +66,21 @@ export class Viewpatient implements OnInit {
     this.isLoading = true;
         this.error = '';
     this.patient = null;
+
     this.patientService.getPatientById(this.patientId).subscribe({
       next: (response) => {
         console.log('🔍 Patient response:', response);
         this.patient = response.data || response;
         this.isLoading = false;
+
+        // FORCE UI UPDATE
+      this.cdr.detectChanges(); 
       },
       error: (err: HttpErrorResponse) => {
         this.error = err.error?.message || err.message || 'Failed to load patient.';
         this.isLoading = false;
+        // FORCE UI UPDATE (to hide spinner and show error)
+      this.cdr.detectChanges();
       }
     });
   }

@@ -17,7 +17,7 @@
   <!-- Right: User Profile / Authentication -->
   <div class="nav-right">
     <ng-container *ngIf="isAuthenticated; else unauthenticated">
-      <div class="user-profile" (click)="toggleDropdown()">
+      <div class="user-profile" (click)="toggleDropdown(); $event.stopPropagation()">
         <div class="avatar">
           {{ getUserInitials() }}
         </div>

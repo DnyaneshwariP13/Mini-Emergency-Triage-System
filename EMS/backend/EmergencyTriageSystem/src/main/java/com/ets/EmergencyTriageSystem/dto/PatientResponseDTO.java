@@ -17,6 +17,6 @@ public class PatientResponseDTO {
     private LocalDateTime arrivalDateTime;
     private Status status; // WAITING, UNDER_TREATMENT, DISCHARGED
 
-    // For the Patient List grid, you might also want the Priority here.
+    // For the Patient List grid, we want the Priority here.
     // We will fetch that via a join query in the service.
 }

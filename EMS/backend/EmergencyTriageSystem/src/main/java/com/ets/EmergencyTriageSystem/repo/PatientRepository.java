@@ -39,11 +39,9 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
     @Query("SELECT p FROM Patient p LEFT JOIN FETCH p.triageAssessment WHERE p.patientId = :id")
     Optional<Patient> findByIdWithTriage(@Param("id") Long id);
 
-    // Add this method
+    // Added this method to ensure each patient has a unique mobile number, which is important for identification and contact purposes.
    boolean existsByMobileNumber(String mobileNumber);
-   // List<Patient> findByNameWithTriage(String trim, org.springframework.data.domain.Sort by);
-
-
+   
        /**
      * Count patients by status (WAITING, UNDER_TREATMENT, DISCHARGED)
      */

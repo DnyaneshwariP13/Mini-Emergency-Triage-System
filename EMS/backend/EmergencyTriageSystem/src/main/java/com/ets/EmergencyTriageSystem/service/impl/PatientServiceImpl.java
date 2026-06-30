@@ -69,7 +69,7 @@ public class PatientServiceImpl implements PatientService {
     public Response<List<Patient>> getPatientList() {
         log.info("Inside getPatientList()");
         
-        // Use JOIN FETCH method with sorting
+        // Used JOIN FETCH method with sorting
         List<Patient> patients = patientRepository.findAllWithTriage(
                 Sort.by(Sort.Direction.DESC, "patientId")
         );
@@ -128,10 +128,6 @@ public class PatientServiceImpl implements PatientService {
         if (request.getStatus() != null) {
         existingPatient.setStatus(request.getStatus());
 }
-        // Optional: if you want to allow updating arrivalDateTime, uncomment:
-        // if (request.getArrivalDateTime() != null) {
-        //     existingPatient.setArrivalDateTime(request.getArrivalDateTime());
-        // }
 
         Patient updatedPatient = patientRepository.save(existingPatient);
 

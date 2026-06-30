@@ -185,7 +185,7 @@ export class Triageform implements OnInit, OnDestroy {
     private router: Router
   ) {}
 ngOnInit(): void {
-  // ✅ Always create the form first
+  //  Always create the form first
   this.triageForm = this.fb.group({
     priority: ['', Validators.required],
     bloodPressure: ['', [Validators.required, Validators.pattern(/^\d{2,3}\/\d{2,3}$/)]],
