@@ -23,8 +23,8 @@ It allows staff to register patients, assign a triage priority (RED / YELLOW / G
 | Layer | Technology |
 |-------|------------|
 | **Frontend** | Angular 20, TypeScript |
-| **Backend** | Spring Boot 10, Spring Security, JWT, Hibernate |
-| **Database** | MySQL 8.x |
+| **Backend** | Spring Boot 4.1.0, Spring Security, JWT, Hibernate |
+| **Database** | MySQL |
 | **API** | RESTful, documented with Postman |
 | **Build Tools** | Maven (backend), Angular CLI (frontend) |
 | **Version Control** | Git / GitHub |
@@ -65,11 +65,11 @@ MiniEmergencyTriageSystem/
 
 ## 📋 Prerequisites
 
-- **Java** 17+
-- **Node.js** 18+ and npm
+- **Java** 21
+- **Node.js** 22.14.0 and npm
 - **Angular CLI** 20: `npm install -g @angular/cli`
-- **MySQL** 8.x
-- **Maven** 3.8+ (or use the wrapper)
+- **MySQL** 9.7.1
+- **Maven** 3.6.3
 
 ---
 
