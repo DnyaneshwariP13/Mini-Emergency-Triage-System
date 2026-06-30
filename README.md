@@ -66,7 +66,7 @@ MiniEmergencyTriageSystem/
 ## 📋 Prerequisites
 
 - **Java** 21
-- **Node.js** 22.14.0 and npm
+- **Node.js** 22.14.0 
 - **Angular CLI** 20: `npm install -g @angular/cli`
 - **MySQL** 9.7.1
 - **Maven** 3.6.3
